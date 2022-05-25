@@ -34,6 +34,7 @@ class CartServices
     public function removeItem($itemId)
     {
         CartItems::where('id', $itemId)->delete();
+
     }
 
     public function cartDetails()
@@ -62,9 +63,10 @@ class CartServices
         return ['cartItems' => $cartItems, 'total' => $totalCheckout];
     }
 
+
+
     public  function countItems()
     {
-
         return CartItems::where('cart_id', $this->cart->id)->count();
     }
 
@@ -73,9 +75,10 @@ class CartServices
         return $this->cart->items;
     }
 
+
+
     public function checkout()
     {
-
         $this->cart->update(['checked' => date('Y-m-d H:i:s')]);
     }
 }
